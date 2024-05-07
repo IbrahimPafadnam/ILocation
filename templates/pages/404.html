@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | Erreur 404 {% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4 mb-4">Erreur 404</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Accueil</a>
+          </li>
+          <li class="breadcrumb-item active">Erreur 404</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="main-container" class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="error-page text-center">
+            <div class="error-code">
+              <h2><strong>404</strong></h2>
+            </div>
+            <div class="error-message">
+              <h3>Oops... Page Introuvable!</h3>
+            </div>
+            <div class="error-body">
+            <br>
+              <a href="{% url 'index'%}" class="btn btn-dark" style="margin-bottom: 20px; width: 100%;">Retournez à la page d'accuiel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

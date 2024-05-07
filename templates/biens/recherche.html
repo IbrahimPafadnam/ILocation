@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | Résultats de recherche {% endblock %}
+
+{% block content %}
+  <section id="showcase_search_top">
+    <div class="container text-center">
+      <div class="home-search p-5">               
+        <div class="overlay search_container">
+
+					<div class="search">
+						<form action="{% url 'recherche' %}">
+							<div class="form-content">
+								<div class="form-search">
+										<div class="col-md-5search mb-3">
+											<label class="sr-only">Mots clés</label>
+											<input type="text" name="cles" class="form-controlinput" placeholder="Rechercher par mots clé">
+										</div>
+
+										<div class="col-md-5search mb-3">
+											<label class="sr-only">Ville</label>
+											<input type="text" name="ville" class="form-controlinput" placeholder="Rechercher par ville">
+										</div>	
+                    <div class="col-md-5search mb-3">
+											<label class="sr-only">Ville</label>
+											<input type="text" name="quartier" class="form-controlinput" placeholder="Rechercher par quartier">
+										</div>	
+								</div>
+								<div class="form-search-button" style="top: 10px;">
+									<button class="btn btn-secondary btn-block mt-4" type="submit">Rechercher</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Accueil</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'biens' %}">Parcourir les annonces</a>
+          </li>
+          <li class="breadcrumb-item active"> Résultats de recherche</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="search_listings" class="py-4">
+    <div class="container">
+      <div class="row">
+        {% if biens %}
+          {% for bien in biens %}
+            <a href="{% url 'bien' bien.id %}">
+
+              <div class="col-md-6 col-lg-4 mb-4 index" id="featured_listings_cards">
+                <div class="card listing-preview">
+                    <img class="card-img-top listing" src="{{ bien.photo_main.url }}" alt="">
+
+                  <div class="card-img-overlay">
+                      <span class="badge badge-secondary text-white">{{ bien.prix | intcomma }} FCFA / {{ bien.type_location }}</span>
+                  </div>
+                  <div class="card-body">
+                    <div class="listing-heading text-center_1">
+                      <a class="text-primary property-title">{{ bien.nom }}</a>
+                    </div>
+                    <div class="listing_location text-center_1">
+                      <a class="property-location">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{ bien.ville }} {{ bien.quartier }}
+                      </a>
+                    </div>
+                    <hr class="hr listing">
+                    <div class="realtor_date">
+                      <div class="row py-2 text-secondary realtor_d">
+                        <div class="col-6">
+                                <img class="card-realtor" src="{{ bien.agent.photo.url }}" alt=""></i> 
+                                <a class="listing-realtor">{{ bien.agent }}</a>
+                              </div>
+                      </div>
+                      <div class="row text-secondary pb-2 r_date">
+                        <div class="col-6 date">
+                          <i class="fas fa-clock"></i>
+                          <a class="listing-time-ago">Il y a {{ bien.ajout_date | timesince }}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        {% else %}
+          <div class="col-md-12">
+            <p>Aucune annonce disponible</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

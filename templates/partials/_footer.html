@@ -1,0 +1,56 @@
+
+<footer id="main-footer">
+	<div class="footer_top">
+		<div class="footer_top_column col_3">
+			<div class="footer_social">
+				<a href="#">
+					<i class="fab fa-facebook"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-linkedin"></i>
+				</a>
+				<a href="#">
+					<i class="fab fa-google"></i>
+				</a>
+			</div>
+			<a class="column_title">Contactez-nous</a>
+			<div class="footer_contact_us">
+				<a>
+					<i class="fas fa-phone"></i>
+					+226 73602537
+				</a>
+				<a>
+					<i class="fas fa-envelope-open"></i> 
+					ipafadnam6@gmail.com
+				</a>
+			</div>
+
+
+	  	</div>
+
+	  	<div class="footer_top_column col_2">
+			<a class="column_title">Liens rapides</a>
+			<a class="footer_click" href="/">Accueil</a>
+			<a class="footer_click" href="/about">À propos de nous</a>
+			<a class="footer_click" href="/biens"> Nos biens disponibles</a>
+			<a class="footer_click" href="{% url 'avis' %}"> Laissez un commentaire</a>
+			{% if user.is_superuser %}
+				<a class="footer_click" href="/meee">Admin</a>
+			{% endif %} 
+		</div>
+
+		<div class="footer_top_column col_1">
+			<a class="footer_text"><span class="logo" id="logo">ILocation</span>s'engage à garantir l'accessibilité numérique aux personnes handicapées, aux personnes venant de l'etrangers, aux fils et filles du Burkina Faso. Nous travaillons continuellement à améliorer l'accessibilité de notre expérience Web pour tous, et nous apprécions les commentaires et les demandes d'adaptation. Si vous souhaitez signaler un problème  veuillez nous contacter.</a>
+		</div>
+
+	</div>
+
+	<div class="footer_bottom">
+
+		<div class="footer_copyright">
+			Copyright &copy;
+			<span class="year"></span> ILocation crée par Ibrahim PAFADNAM
+		</div>
+	</div>
+
+</footer>

@@ -1,0 +1,143 @@
+{% extends 'base.html' %} 
+
+{% load humanize %}
+{% load static %}
+
+{% block title %} | Bienvenue {% endblock %}
+
+{% block content %}
+<section id="showcase">
+		<div class="container text-center">
+			<h1 class="display-4 mb-4">Bienvenue dans l'univers de la location par excellence</h1>
+			<p></p>
+			<div class="home-search p-5">
+				<div class="overlay search_container">
+
+					<div class="search">
+						<form action="{% url 'recherche' %}">
+							<div class="form-content">
+								<div class="form-search">
+										<div class="col-md-5search mb-3">
+											<label class="sr-only">Mots clés</label>
+											<input type="text" name="cles" class="form-controlinput" placeholder="Rechercher par mots clé">
+										</div>
+
+										<div class="col-md-5search mb-3">
+											<label class="sr-only">Ville</label>
+											<input type="text" name="ville" class="form-controlinput" placeholder="Rechercher par ville">
+										</div>	
+										<div class="col-md-5search mb-3">
+											<label class="sr-only">Ville</label>
+											<input type="text" name="quartier" class="form-controlinput" placeholder="Rechercher par quartier">
+										</div>
+									
+								</div>
+								<div class="form-search-button" style="top: 10px;">
+									<button class="btn btn-secondary btn-block mt-4" type="submit">Rechercher</button>
+								</div>
+							</div>
+						</form>
+					</div>		
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+	{% include 'partials/_alerts.html' %}  
+
+	<section id="services" class="py-5 bg-secondary text-white">
+		<div class="container">
+			<h3 class="text-center mb-31">
+				<a>Ce que nous offrons</a>
+				<hr class="main_underline">
+			</h3>
+			<div class="row text-center" style="justify-content: center;">
+				<div class="col-md-4 products">
+					<img class="re_products image" src="{% static 'img/photo/rent_house.png' %}">
+					<h3 class="index_bottom_title">Nous offrons des services de location de biens</h3>
+					<p class="index_bottom_text">Avec une recherche par mot clé personnalisée, Vous trouver facilement une maison ou voiture que vous adorerez à louer ..</p>
+				</div>
+				<div class="col-md-4 products">
+					<img class="re_products image" src="{% static 'img/photo/rent_house.png' %}">
+					<h3 class="index_bottom_title">La simplicité de la location, à portée de clic</h3>
+					<p class="index_bottom_text">Des biens qui répondent à vos besoins, du quotidien aux événements spéciaux</p>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+	<section id="listings" class="py-5 bg-secondary text-white">
+		<div class="container">
+			<h3 class="text-center mb-31">
+				<a>Découvrez des biens uniques pour chaque occasion</a>
+				<hr class="main_underline">
+			</h3>
+			<div class="enclose_row">
+				<div class="row"> 
+					{% if biens %}
+						{% for bien in biens %}
+							<a href="{% url 'bien' bien.id %}">
+
+							<div class="col-md-6 col-lg-4 mb-4 index">
+								<div class="card listing-preview">
+										<img class="card-img-top listing" src="{{ bien.photo_main.url }}" alt="">
+									<div class="card-img-overlay">
+											<span class="badge badge-secondary text-white">{{ bien.prix | intcomma }}FCFA Par {{ bien.type_location }}</span>
+									</div>
+									<div class="card-body">
+										<div class="listing-heading text-center_1">
+											<a class="text-primary property-title">{{ bien.nom }}</a>
+										</div>
+										<div class="listing_location text-center_1">
+											<a class="property-location">
+												<i class="fa fa-map-marker" aria-hidden="true"></i>
+												{{ bien.ville }} {{ bien.quartier }}
+											</a>
+										</div>
+										<div class="listing_location text-center_1">
+											<a class="property-location">
+												<i class="fa fa-hand-o-up" aria-hidden="true"></i>
+												Cliquer pour voir plus de details
+											</a>
+										</div>
+										<hr class="hr listing">
+										<div class="realtor_date">
+											<div class="row py-2 text-secondary realtor_d">
+												<div class="col-6">
+		            								<img class="card-realtor" src="{{ bien.agent.photo.url }}" alt=""></i> 
+		            								<a class="listing-realtor">{{ bien.agent }}</a>
+		            							</div>
+											</div>
+											<div class="row text-secondary pb-2 r_date">
+												<div class="col-6 date">
+													<i class="fas fa-clock"></i>
+													<a class="listing-time-ago">{{ bien.ajout_date | timesince }}</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</a>
+						{% endfor %}
+					{% else %}
+						<div class="col-md-12">
+							<p>Aucune annonce disponible</p>
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="work" class="bg-dark text-white text-center">
+		<h2 class="display-5">Explorez nos biens disponibles dès maintenant</h2>
+		<hr>
+		<a href="{% url 'biens' %}" class="btn btn-secondary text-white btn-lg">Voir plus de biens</a>
+	</section>
+	
+
+
+{% endblock %}
