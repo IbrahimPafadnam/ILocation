@@ -11,7 +11,7 @@ urlpatterns = [
     path('comptes/', include('comptes.urls')),
     path('contacts/', include('contacts.urls')),
     path('commentaire/', include('commentaire.urls')),
-    path('meee/', admin.site.urls),
+    path('meee', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

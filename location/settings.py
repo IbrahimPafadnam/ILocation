@@ -37,7 +37,7 @@ SECRET_KEY = env("SECRET_KEY")
 # Erreur 404: False
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ilocation.onrender.com','127.0.0.1']
 
 
 # Application definition
@@ -146,13 +146,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'location/static')
+    os.path.join(BASE_DIR,'location/static/')
 ]
 
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
 
 
 EMAIL_BACKEND = env("EMAIL_BACKEND")
