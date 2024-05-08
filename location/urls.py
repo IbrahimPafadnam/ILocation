@@ -12,9 +12,7 @@ urlpatterns = [
     path('contacts/', include('contacts.urls')),
     path('commentaire/', include('commentaire.urls')),
     path('meeee/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += staticfiles_urlpatterns()
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) + staticfiles_urlpatterns()
 
 #Erreur 404
 handler404 ="pages.views.handler404"
