@@ -9,7 +9,7 @@ def commentaire(request):
         form = CommentaireForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        messages.error(request, 'Merci de nous laisser un commentaire')
+        messages.success(request, 'Merci de nous laisser un commentaire')
         return redirect('avis')
     else:
         form = CommentaireForm()

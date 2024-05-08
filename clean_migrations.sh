@@ -1,4 +1,4 @@
-rm .db.sqlite3
+rm db.sqlite3
 
 rm -rf agents/migrations/*
 rm -rf biens/migrations/*

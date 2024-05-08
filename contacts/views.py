@@ -27,7 +27,7 @@ def contact(request):
 
       send_mail(
         subject='ILocation: Contact de '+ nom + ' pour ' + bien,
-        message=nom + ' vous a contacté concernant le bien '+bien+ ' .Son numéro de téléphone est le '+phone+ ' .Connectez-vous au panneau d\'administration pour plus d\'informations.',
+        message = 'Cher Admin, nous avons une mise à jour importante pour vous'. nom + 'a exprimé son intérêt pour' + bien + 'que vous avez mis en vente/location. Il semble très intéressé et aimerait entrer en contact avec vous. Vous pouvez le joindre directement à son numéro de téléphone, qui est le' + phone + '.Pour plus de détails sur cette interaction et d\’autres informations pertinentes, nous vous invitons à vous connecter à votre panneau d\’administration. https://ilocation.onrender.com/meeee/ ',
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[agent,'ipafadnam10@gmail.com'],
         fail_silently=False
@@ -42,3 +42,4 @@ def contact(request):
     
     
 
+    

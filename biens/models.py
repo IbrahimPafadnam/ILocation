@@ -15,7 +15,7 @@ CHOIX_TYPE = (
     ("J","Jours"), 
     ("S","Semaines"), 
     ("M","Mois"), 
-    ("Vente","Vente")
+    ("V","Vente")
 )
 
 class Bien(models.Model):
